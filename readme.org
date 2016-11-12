@@ -1,0 +1,21 @@
+
+* example
+
+#+BEGIN_SRC emacs-lisp
+(require 'lab)
+
+;; namespace definition
+(defvar math-namespace
+  `(:plus ,#'+
+    :minus ,#'-
+    :multi ,#'*
+    :div ,#'/))
+
+;; define functions with the namespace
+(lab:let ((math math-namespace))
+  (defun my:plus (x)
+    (math/plus x x)))
+
+(my:plus 2) ;=> 4
+
+#+END_SRC
