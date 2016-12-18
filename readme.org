@@ -4,17 +4,16 @@
 #+BEGIN_SRC emacs-lisp
 (require 'lab)
 
-;; namespace definition
-(defvar math-namespace
-  `(:plus ,#'+
-    :minus ,#'-
-    :multi ,#'*
-    :div ,#'/))
+(put 'math :lab/exports
+     `(:plus ,#'+
+       :minus ,#'-
+       :multi ,#'*
+       :div ,#'/))
 
 ;; define functions with the namespace
-(lab:let ((math math-namespace))
+(lab:let ((m math))
   (defun my:plus (x)
-    (math/plus x x)))
+    (m/plus x x)))
 
 (my:plus 2) ;=> 4
 
