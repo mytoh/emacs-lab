@@ -14,9 +14,9 @@
                                   (glof:string fname)))
                   '(&rest args)
                   `(apply
-                    (cl-getf ,lib ,fname)
+                    (cl-getf ',(get lib :lab/exports) ,fname)
                     args)))
-          (glof:names (symbol-value lib))))
+          (glof:names (get lib :lab/exports))))
 
 (cl-defmacro lab:let (binds &rest body)
   (declare (indent 1))
